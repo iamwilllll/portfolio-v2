@@ -1,6 +1,6 @@
 // gulp, gulp-sass, gulp-terser, gulp-typescript, prettier, sass, sharp
 
-import * as dartSass from 'sass'; // Import the dart sass module
+import * as dartSass from 'sass'; // ImTport the dart sass module
 import gulpSass from 'gulp-sass'; // Import the gulp-sass module
 import terser from 'gulp-terser'; // Import the gulp-terser module to compress JS files
 import ts from 'gulp-typescript'; // Import the gulp-typescript module to compilate TS files
@@ -84,7 +84,7 @@ export function format(cb) {
 // Function to watch for changes in SCSS and JS files
 export function dev() {
     watch('src/styles/**/*.scss', css);
-    watch('src/TypeScript/**/*.ts', compileTs);
+    watch('src/scripts/**/*.ts', compileTs);
     watch('src/assets/images/**', crop);
 }
 

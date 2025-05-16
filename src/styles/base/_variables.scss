@@ -1,8 +1,10 @@
 /* ----- Import Montserrat font----- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&...&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 // Fonts
-$primary-font: 'Montserrat', sans-serif;
+$primary-font: 'Raleway', sans-serif;
+$secondary-font: 'Montserrat', sans-serif;
 
 //Media Queries
 $phone: 480px;
@@ -11,8 +13,16 @@ $desktop: 1200px;
 $desktopXL: 1400px;
 
 // Colors
-$black: #000000;
 $white: #ffffff;
+$lavender: #b292ff;
+$teal: #5fb9b0;
+$gray-light: #c8c8c8;
+$gray-dark: #6f6f6f;
+$charcoal: #272727;
+$almost-black: #131313;
+$deep-black: #111111;
+$off-black: #0c0c0d;
+$black: #000000;
 
 // Font Weights
 $light: 300;

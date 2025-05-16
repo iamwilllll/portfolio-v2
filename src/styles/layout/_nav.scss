@@ -1,0 +1,97 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+body {
+    background-color: v.$off-black;
+}
+
+.nav {
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    background-color: v.$almost-black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: 0.5s;
+
+    @include m.tablet {
+        transform: translateY(0);
+
+        position: static;
+        margin: 2.5rem auto;
+        width: 50%;
+        padding: 1rem 5rem;
+        border-radius: 5rem;
+    }
+
+    ul {
+        display: inherit;
+        flex-direction: column;
+
+        @include m.tablet {
+            flex-direction: row;
+            gap: 4rem;
+        }
+
+        li {
+            display: inherit;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin-top: 1rem;
+
+            @include m.tablet {
+                margin-top: 0rem;
+                gap: 1rem;
+            }
+
+            a {
+                color: v.$lavender;
+                font-size: 2.5rem;
+                transition: 0.2s;
+
+                &:hover {
+                    color: v.$white;
+                    transform: scale(1.2);
+                }
+            }
+
+            .nav__img__link {
+                width: 3.5rem;
+                height: 3.5rem;
+
+                &:hover {
+                    transform: translateY(-0.5rem);
+                    transform: scale(1.2);
+                    filter: brightness(0) invert(1);
+                }
+            }
+        }
+    }
+}
+
+.nav__button {
+    position: absolute;
+    top: 5rem;
+    right: 5rem;
+    width: 4rem;
+    filter: brightness(100) invert(0);
+    transition: 0.2s;
+    transform: scale(1.3);
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+        filter: none;
+    }
+
+    @include m.tablet {
+        display: none;
+    }
+}
+
+.active {
+    transform: translateY(0);
+}
