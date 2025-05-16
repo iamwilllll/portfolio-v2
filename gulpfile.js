@@ -1,4 +1,4 @@
-// gulp, gulp-sass, gulp-terser, gulp-typescript, prettier, sass, sharp
+//gulp gulp-sass sass gulp-postcss postcss cssnano gulp-typescript typescript gulp-terser gulp-prettier prettier sharp
 
 import * as dartSass from 'sass'; // ImTport the dart sass module
 import gulpSass from 'gulp-sass'; // Import the gulp-sass module
@@ -9,9 +9,11 @@ import path from 'path'; // Import the path module to work with file paths
 import fs from 'fs'; // Import the fs module to work with the file system
 import { exec } from 'child_process'; // Import exec to run Prettier
 
-// Import Gulp methods
+import { src, dest, watch, series } from 'gulp'; // Import Gulp methods
 
-import { src, dest, watch, series } from 'gulp';
+// Added for post-processing CSS
+import postcss from 'gulp-postcss'; // Import gulp-postcss
+import cssnano from 'cssnano'; // Import cssnano to minify CSS
 
 const sass = gulpSass(dartSass); // Initialize gulp-sass with dart-sass
 
@@ -25,7 +27,8 @@ export function compileTs() {
 // Function to process CSS files
 export function css() {
     return src('src/styles/index.scss', { sourcemaps: true })
-        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError)) // Compile and compress SCSS
+        .pipe(sass().on('error', sass.logError)) // Compile SCSS
+        .pipe(postcss([cssnano()])) // Minify CSS using PostCSS + cssnano
         .pipe(dest('build/css', { sourcemaps: '.' })); // Save compiled files with sourcemaps
 }
 
