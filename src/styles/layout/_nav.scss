@@ -1,10 +1,6 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
-body {
-    background-color: v.$off-black;
-}
-
 .nav {
     position: absolute;
     height: 50%;

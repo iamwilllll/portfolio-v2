@@ -1,0 +1,47 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+body {
+    background-color: #0c0c0d;
+}
+
+.hero {
+    margin-top: 10rem;
+    display: flex;
+    color: v.$white;
+
+    .hero__info {
+        h1 {
+            margin: 0;
+            font-weight: v.$regular;
+            font-size: 5rem;
+        }
+
+        p {
+            color: v.$gray-dark;
+            font-weight: 300;
+
+            span {
+                font-weight: v.$regular;
+
+                color: v.$white;
+            }
+        }
+    }
+
+    picture {
+        display: flex;
+        justify-content: end;
+
+        img {
+            width: 35rem;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+        }
+    }
+    section,
+    picture {
+        width: 50%;
+    }
+}

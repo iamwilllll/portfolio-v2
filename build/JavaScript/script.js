@@ -1,1 +1,8 @@
-"use strict";addEventListener("DOMContentLoaded",(()=>{const e=document.querySelector("#open-menu"),t=document.querySelector(".nav");e.addEventListener("click",(()=>{t.classList.toggle("active")}))}));
+'use strict';
+addEventListener('DOMContentLoaded', () => {
+    const e = document.querySelector('#open-menu'),
+        t = document.querySelector('.nav');
+    e.addEventListener('click', () => {
+        t.classList.toggle('active');
+    });
+});
