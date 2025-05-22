@@ -1,8 +1,1 @@
-'use strict';
-addEventListener('DOMContentLoaded', () => {
-    const e = document.querySelector('#open-menu'),
-        t = document.querySelector('.nav');
-    e.addEventListener('click', () => {
-        t.classList.toggle('active');
-    });
-});
+"use strict";addEventListener("DOMContentLoaded",(()=>{const e=document.querySelector("#open-menu"),s=document.querySelector(".nav");e&&s&&e.addEventListener("click",(()=>{s.classList.toggle("active")})),s&&(window.addEventListener("scroll",(()=>{window.scrollY>100?s.classList.add("shrunk"):s.classList.remove("shrunk")})),s.addEventListener("mouseenter",(()=>{s.classList.remove("shrunk")})),s.addEventListener("mouseleave",(()=>{s.classList.add("shrunk")})))}));
