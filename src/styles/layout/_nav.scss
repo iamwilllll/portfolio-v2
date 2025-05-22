@@ -1,6 +1,12 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
+body,
+html,
+main {
+    height: 510rem;
+}
+
 .nav {
     position: absolute;
     height: 50%;
@@ -14,11 +20,13 @@
     z-index: 1;
 
     @include m.tablet {
-        transform: translateY(0);
-
-        position: static;
-        margin: 2.5rem auto;
+        position: fixed;
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 5rem;
         width: 60%;
+        margin: 2.5rem auto;
         padding: 1rem 5rem;
         border-radius: 5rem;
     }
@@ -101,6 +109,12 @@
     }
 }
 
-.active {
+.nav.active {
     transform: translateY(0);
+}
+
+.nav.shrunk {
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0.8;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
