@@ -6,25 +6,90 @@ body {
 }
 
 .hero {
-    margin-top: 10rem;
     display: flex;
+    flex-direction: column-reverse;
     color: v.$white;
+
+    @include m.desktop {
+        flex-direction: row;
+        margin-top: 15rem;
+    }
 
     .hero__info {
         h1 {
             margin: 0;
             font-weight: v.$regular;
             font-size: 5rem;
+            text-align: center;
+
+            @include m.desktop {
+                text-align: left;
+            }
         }
 
         p {
             color: v.$gray-dark;
             font-weight: 300;
+            text-align: center;
+
+            @include m.desktop {
+                text-align: left;
+            }
 
             span {
                 font-weight: v.$regular;
-
                 color: v.$white;
+            }
+        }
+    }
+    .hero__buttons__container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        @include m.desktop {
+            flex-direction: row;
+
+            gap: 5rem;
+            margin-top: 5rem;
+        }
+
+        .hero__button {
+            display: inherit;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: v.$secondary-font;
+            font-weight: v.$regular;
+            background-color: v.$white;
+            height: 5rem;
+            padding: 1rem 4rem;
+            border-radius: 5rem;
+            transition: 0.2s;
+
+            @include m.tablet {
+                width: 35rem;
+                margin: auto;
+            }
+
+            @include m.desktop {
+                padding: 0.5rem 4rem;
+            }
+
+            &--linkedin {
+                display: inherit;
+                gap: 1rem;
+                color: v.$lavender;
+                background: linear-gradient(to bottom, #232323, #434343, #232323);
+
+                img {
+                    width: 3.5rem;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.1);
             }
         }
     }
@@ -33,15 +98,24 @@ body {
         display: flex;
         justify-content: end;
 
+        @include m.tablet {
+            width: 50rem;
+            margin: auto;
+        }
+
         img {
-            width: 35rem;
-            display: flex;
-            justify-content: end;
-            align-items: center;
+            filter: drop-shadow(0px 0px 100px rgba(v.$white, 0.5));
+
+            @include m.desktop {
+                width: 35rem;
+            }
         }
     }
-    section,
-    picture {
-        width: 50%;
+
+    @include m.desktop {
+        section,
+        picture {
+            width: 50%;
+        }
     }
 }
