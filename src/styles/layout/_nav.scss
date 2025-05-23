@@ -1,12 +1,6 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
-body,
-html,
-main {
-    height: 510rem;
-}
-
 .nav {
     position: absolute;
     height: 50%;
@@ -116,5 +110,7 @@ main {
 .nav.shrunk {
     transform: translateX(-50%) scale(0.8);
     opacity: 0.8;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
 }
