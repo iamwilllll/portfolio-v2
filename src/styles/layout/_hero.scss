@@ -8,7 +8,11 @@
 
     @include m.desktop {
         flex-direction: row;
-        margin-top: 20rem;
+        margin-top: 15rem;
+    }
+
+    @include m.desktopXL {
+        flex-direction: row;
     }
 
     .hero__info {
@@ -71,6 +75,10 @@
 
             @include m.desktop {
                 padding: 0.5rem 4rem;
+            }
+
+            &--cv {
+                color: v.$black;
             }
 
             &--linkedin {

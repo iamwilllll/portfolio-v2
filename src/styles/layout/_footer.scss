@@ -2,15 +2,15 @@
 @use '../base/mixins' as m;
 
 footer {
-    div {
+    .footer__container {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-direction: column;
         border-radius: 5rem;
         padding: 0.5rem 5rem;
-        background-color: v.$deep-black;
         font-family: v.$secondary-font;
+        background-color: v.$deep-black;
 
         @include m.tablet {
             flex-direction: row;
@@ -30,6 +30,12 @@ footer {
             }
         }
     }
+
+    div {
+        display: flex;
+        flex-direction: row;
+    }
+
     p {
         color: v.$white;
         text-align: center;
@@ -39,4 +45,8 @@ footer {
 
 .footer__icons {
     width: 5rem;
+
+    @include m.tablet {
+        width: 3rem;
+    }
 }
