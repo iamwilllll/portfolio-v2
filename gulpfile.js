@@ -67,6 +67,7 @@ export async function crop() {
         // Move icons and SVGs
         src('src/assets/images/**/*.ico').pipe(dest('build/images/ico'));
         src('src/assets/images/**/*.svg').pipe(dest('build/images/svg'));
+        src('src/assets/icons/**/*.svg').pipe(dest('build/images/svg'));
 
         // Copiar directamente los archivos WebP sin conversión
         src('src/assets/images/**/*.webp').pipe(dest('build/images/webp'));

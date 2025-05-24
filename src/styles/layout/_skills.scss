@@ -1,0 +1,95 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    align-items: center;
+    color: v.$white;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        @include m.desktop {
+            gap: 5rem;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        text-align: center;
+
+        @include m.desktop {
+            text-align: left;
+        }
+    }
+
+    &__sub__title {
+        font-size: 2rem;
+        margin: 0;
+
+        @include m.desktop {
+            font-size: 2.5rem;
+        }
+    }
+
+    &__content {
+        border: solid v.$white 0.1rem;
+        border-radius: 5rem;
+        padding: 2rem 3rem;
+        transition: 0.2s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        @include m.desktop {
+            padding: 2.5rem 5rem;
+        }
+    }
+
+    &__list {
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            gap: 2rem;
+            transition: 0.2s;
+
+            &:hover {
+                transform: scale(1.01);
+
+                @include m.desktop {
+                    transform: scale(1.1);
+                }
+            }
+
+            p {
+                color: v.$white;
+            }
+
+            img {
+                width: 3rem;
+                height: 3rem;
+            }
+
+            div {
+                border-radius: 5rem;
+                background-color: v.$charcoal;
+                padding: 1.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+footer {
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 5rem;
+        padding: 0.5rem 5rem;
+        background-color: v.$deep-black;
+        font-family: v.$secondary-font;
+
+        @include m.tablet {
+            flex-direction: row;
+        }
+
+        ul {
+            display: inherit;
+            gap: 2rem;
+            list-style: none;
+
+            li {
+                transition: 0.2s;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+    p {
+        color: v.$white;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+}
+
+.footer__icons {
+    width: 5rem;
+}

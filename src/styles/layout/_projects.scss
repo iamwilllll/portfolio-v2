@@ -4,15 +4,15 @@
 .projects {
     color: v.$white;
     position: relative;
-    height: 100rem;
+    height: 85rem;
     transition: 0.2s;
     overflow: hidden;
 
     @include m.desktop {
-        height: 80rem;
+        height: 70rem;
     }
 
-    h2 {
+    &__tittle {
         margin: 0;
         font-size: 3rem;
 
@@ -154,10 +154,6 @@
 
         &--2 {
             right: 1rem;
-
-            @include m.desktop {
-                right: 0;
-            }
         }
 
         img {
