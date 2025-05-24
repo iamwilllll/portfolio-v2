@@ -55,9 +55,7 @@ addEventListener('DOMContentLoaded', () => {
                 const projectsContent = document.querySelectorAll('.projects__content') as NodeList | null;
 
                 if (projectsContent) {
-                    projectsContent.forEach(i => {
-                        console.log(i.classList);
-                    });
+                    projectsContent.forEach(i => {});
                 }
             }
         });

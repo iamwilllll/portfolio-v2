@@ -86,7 +86,7 @@
     position: absolute;
     top: 5rem;
     right: 5rem;
-    width: 4rem;
+    width: 5rem;
     filter: brightness(100) invert(0);
     transition: 0.2s;
     transform: scale(1.3);
@@ -96,6 +96,11 @@
     &:focus {
         cursor: pointer;
         filter: none;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
     }
 
     @include m.tablet {
@@ -108,9 +113,11 @@
 }
 
 .nav.shrunk {
-    transform: translateX(-50%) scale(0.8);
-    opacity: 0.8;
-    transition:
-        transform 0.3s ease,
-        opacity 0.3s ease;
+    @include m.tablet {
+        transform: translateX(-50%) scale(0.8);
+        opacity: 0.8;
+        transition:
+            transform 0.3s ease,
+            opacity 0.3s ease;
+    }
 }

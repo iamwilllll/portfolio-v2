@@ -3,22 +3,38 @@
 
 .projects {
     color: v.$white;
-    //overflow: hidden;
     position: relative;
-    height: 80rem;
+    height: 100rem;
     transition: 0.2s;
+    overflow: hidden;
+
+    @include m.desktop {
+        height: 80rem;
+    }
 
     h2 {
-        margin-bottom: 0;
+        margin: 0;
+        font-size: 3rem;
+
+        @include m.desktop {
+            margin-bottom: 0;
+            font-size: 3.4rem;
+        }
     }
 
     picture {
-        margin-top: 2.5rem;
+        @include m.desktop {
+            margin-top: 2.5rem;
+        }
 
         img {
-            width: 40rem;
+            width: 100%;
             height: 25rem;
             border-radius: 5rem;
+
+            @include m.desktop {
+                width: 40rem;
+            }
         }
     }
 
@@ -29,7 +45,6 @@
 
     &__content {
         position: absolute;
-        right: 0;
         top: 100%;
         width: 100%;
         height: 50rem;
@@ -45,23 +60,49 @@
 
     &__item {
         background-color: v.$deep-black;
-        padding: 5rem;
+        padding: 1rem;
         border-radius: 5rem;
         position: absolute;
-        top: 50%;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
 
-        transform: translateY(-50%);
         &:nth-child(1) {
-            left: 2.5rem;
+            top: 10%;
         }
 
         &:nth-child(2) {
-            right: 2.5rem;
+            top: 70%;
+        }
+
+        @include m.desktop {
+            padding: 5rem;
+            width: 50rem;
+            top: 50%;
+            left: auto;
+            transform: translateY(-50%);
+
+            &:nth-child(1) {
+                left: 3.5rem;
+                top: 60%;
+                transform: translateY(-50%);
+            }
+
+            &:nth-child(2) {
+                right: 2.5rem;
+                top: 60%;
+                transform: translateY(-50%);
+            }
         }
     }
 
     &__name {
         margin: 0;
+        display: none;
+
+        @include m.desktop {
+            display: block;
+        }
     }
 
     &__date {
@@ -69,17 +110,35 @@
         margin: 0;
         line-height: 0;
         font-size: 1.5rem;
+        display: none;
+
+        @include m.desktop {
+            display: block;
+        }
     }
 
     &__move_button {
         position: absolute;
         height: 50rem;
-        top: 20%;
-        width: 3.5rem;
+        top: 30%;
+        width: 5rem;
         opacity: 0.2;
         transition: 0.2s;
+        z-index: 5;
+        background-color: #0000001a;
+        border-radius: 5rem;
 
-        &:hover {
+        @include m.tablet {
+            top: 20%;
+        }
+
+        @include m.desktop {
+            width: 3.5rem;
+            background: none;
+        }
+
+        &:hover,
+        &:focus {
             cursor: pointer;
             opacity: 1;
 
@@ -89,12 +148,16 @@
         }
 
         &--1 {
-            left: 0;
+            left: 1rem;
             transform: rotate(180deg);
         }
 
         &--2 {
-            right: 0;
+            right: 1rem;
+
+            @include m.desktop {
+                right: 0;
+            }
         }
 
         img {
