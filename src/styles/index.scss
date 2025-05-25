@@ -4,8 +4,14 @@
 @forward './base/mixins';
 @forward './base/utilities';
 
-@forward './layout/nav';
-@forward './layout/hero';
-@forward './layout/projects';
-@forward './layout/skills';
+//layout
+@forward './layout/navbar';
 @forward './layout/footer';
+
+//home
+@forward './pages/home/hero';
+@forward './pages/home/projects';
+@forward './pages/home/skills';
+
+//contact
+@forward './pages/contact/form';

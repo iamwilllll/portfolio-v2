@@ -2,7 +2,7 @@
 @use '../base/mixins' as m;
 
 .nav {
-    position: absolute;
+    position: fixed;
     height: 50%;
     width: 100%;
     background-color: v.$almost-black;
@@ -19,14 +19,14 @@
         left: 50%;
         transform: translateX(-50%);
         height: 5rem;
-        width: 60%;
+        width: 80%;
         margin: 2.5rem auto;
         padding: 1rem 5rem;
         border-radius: 5rem;
     }
 
     @include m.desktop {
-        width: 40%;
+        width: 55%;
     }
 
     ul {
@@ -73,7 +73,7 @@
                     width: 5rem;
                     height: 5rem;
 
-                    @include m.desktop {
+                    @include m.tablet {
                         width: 3rem;
                         height: 3rem;
                     }
@@ -90,7 +90,7 @@
 }
 
 .nav__button {
-    position: absolute;
+    position: fixed;
     top: 5rem;
     right: 5rem;
     width: 5rem;

@@ -1,3 +1,5 @@
+// cssnano gulp gulp-postcss gulp-prettier gulp-replace gulp-sass gulp-terser gulp-typescript postcss prettier sass sharp typescript
+
 // Import necessary modules
 import * as dartSass from 'sass'; // Dart Sass for SCSS compilation
 import gulpSass from 'gulp-sass'; // Gulp integration with Sass
@@ -105,7 +107,7 @@ export function fixPaths() {
             // Remove '/build' prefix from src attributes
             .pipe(replace(/src="\/build([^"]*)"/g, 'src="$1"'))
             // Remove '/build' prefix from srcset attributes
-            .pipe(replace(/srcset="\/build([^"]*)"/g, 'src="$1"'))
+            .pipe(replace(/srcset="\/build([^"]*)"/g, 'srcset="$1"'))
             .pipe(dest('build'))
     );
 }
@@ -119,7 +121,7 @@ export function dev() {
 }
 
 // Build task runs all functions in series, including path fixing
-export const build = series(format, crop, compileTs, css, html, fixPaths);
+export const build = series(format, crop, compileTs, css, html, fixPaths, dev);
 
 // Export build as default task
 export default build;
