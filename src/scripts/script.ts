@@ -14,6 +14,14 @@ addEventListener('DOMContentLoaded', () => {
             // This allows showing or hiding the navigation menu
             nav.classList.toggle('active');
         });
+
+        document.addEventListener('click', event => {
+            const target = event.target as Node;
+
+            if (nav.classList.contains('active') && !nav.contains(target) && !openMenu.contains(target)) {
+                nav.classList.remove('active');
+            }
+        });
     }
 
     if (nav) {
