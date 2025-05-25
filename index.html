@@ -3,10 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Portfolio of a web developer" />
-        <meta name="author" content="Wilfryn Viloria Rosario" />
+        <meta name="description" content="Portfolio of a web deveoper" />
+        <meta name="author" content="Wilf`ryn Viloria Rosario" />
         <meta name="keywords" content="portfolio, web developer, projects, skills, junior, web developer, dev," />
+        <link rel="canonical" href="https://iamwil.me/" />
         <link rel="stylesheet" href="/build/css/index.css" />
+        <link rel="preload" as="image" href="/build/images/webp/avatar.webp" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+        <link rel="preload" as="font" href="https://fonts.gstatic.com/s/raleway/v28/1Ptug8zYS_SKggPN4iEgvnHy.woff2" type="font/woff2" crossorigin />
+
         <title>Portfolio</title>
     </head>
     <body>
@@ -38,7 +46,7 @@
                     <source srcset="/build/images/webp/avatar.webp" type="image/webp" />
                     <source srcset="/build/images/jpg/avatar.jpg" type="image/jpeg" />
                     <source srcset="/build/images/png/avatar.png" type="image/png" />
-                    <img loading="lazy" src="/build/images/webp/avatar.webp" alt="Avatar de Wilfryn Viloria Rosario" />
+                    <img src="/build/images/webp/avatar.webp" alt="Avatar de Wilfryn Viloria Rosario" />
                 </picture>
             </header>
             <section class="projects container" id="projects">
@@ -215,5 +223,5 @@
             <p>Wilfryn Viloria © 2025</p>
         </footer>
     </body>
-    <script src="/build/JavaScript/script.js"></script>
+    <script src="/build/JavaScript/script.js" defer></script>
 </html>

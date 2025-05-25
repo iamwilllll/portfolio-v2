@@ -45,8 +45,10 @@ footer {
 
 .footer__icons {
     width: 5rem;
+    height: 5rem;
 
     @include m.tablet {
         width: 3rem;
+        height: 3rem;
     }
 }
