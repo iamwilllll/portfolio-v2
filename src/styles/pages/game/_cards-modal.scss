@@ -1,0 +1,100 @@
+@use '../../base/variables' as v;
+@use '../../base/mixins' as m;
+
+.game__modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    z-index: 5;
+    left: 50%;
+    padding: 5rem 20rem;
+    background-color: v.$deep-black;
+    border-radius: 5rem;
+    transition: 1.5s;
+    border: solid 0.1rem v.$lavender;
+
+    &__info {
+        display: inherit;
+        flex-direction: row-reverse;
+        gap: 30rem;
+
+        p {
+            color: v.$white;
+            font-weight: v.$bold;
+        }
+        p span {
+            font-weight: v.$regular;
+        }
+    }
+
+    &__button {
+        img {
+            width: 3rem;
+            height: 3rem;
+            transition: 0.2s;
+            filter: brightness(0) invert(1);
+
+            &:hover {
+                filter: none;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+    }
+
+    &__container {
+        display: flex;
+    }
+
+    .play__again {
+        color: v.$black;
+        background-color: v.$white;
+        padding: 1rem 5rem;
+        border-radius: 5rem;
+        transition: 0.2s;
+
+        &:hover {
+            cursor: pointer;
+            background-color: v.$lavender;
+            color: v.$white;
+            transform: scale(1.1);
+        }
+    }
+
+    &__message {
+        font-size: 5rem;
+        color: v.$white;
+        background-color: #000000cc;
+        padding: 8rem 10rem;
+        border-radius: 1rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &.active {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &.hidden {
+        top: -100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+#modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}

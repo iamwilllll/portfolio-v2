@@ -1,0 +1,70 @@
+@use '../../base/variables' as v;
+@use '../../base/mixins' as m;
+@use 'sass:color';
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.5s;
+
+    &:nth-child(even) .card__item {
+        color: v.$lavender;
+    }
+
+    &.active,
+    &.winner {
+        transform: translateY(-10rem);
+    }
+}
+
+.card__item {
+    background-color: v.$white;
+    width: 10rem;
+    height: 15rem;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    position: relative;
+
+    &-header,
+    &-footer {
+        font-size: 2.4rem;
+    }
+
+    &-header {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+    }
+
+    &-footer {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    &-symbol {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4.8rem;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.poker-chip {
+    width: 5rem;
+    transform: translateY(0rem);
+    opacity: 0;
+    z-index: -1;
+    transition: 0.2s;
+
+    &.active {
+        opacity: 1;
+        z-index: 2;
+    }
+}
