@@ -122,6 +122,8 @@ if (modal) {
 document.addEventListener('click', event => {
     if (event.target === modal) {
         toggleModal();
+
+        modal?.classList.toggle('modal');
     }
 });
 
@@ -155,6 +157,7 @@ function toggleModal(): void {
 // Initialize the game with a given number of cards and attempts
 function startGame(): void {
     toggleModal();
+    modal?.classList.toggle('modal');
 
     let numCards = 3;
     let maxAttempts = 2;
@@ -244,4 +247,4 @@ function resetGame(): void {
     setTimeout(() => startGame(), 500);
 }
 
-startGame();
+// startGame();
