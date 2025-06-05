@@ -103,13 +103,20 @@ addEventListener('DOMContentLoaded', () => {
 // game.ts
 // =====================
 // Select modal and buttons
+const startGameButton = document.querySelector('#start-game');
+
+if (startGameButton) {
+    startGameButton.addEventListener('click', () => {
+        startGame();
+    });
+}
 
 const modal = document.querySelector<HTMLElement>('#modal') || null;
 if (modal) {
     modal.innerHTML = `  
     <section class="game__modal hidden" >              
         <div class="game__modal__info">
-            <button class="button game__modal__button" id="close-modal"><img src="/build/images/svg/close.svg" alt="close icon" loading="lazy" /></button>
+            <button class="button game__modal__button" id="close-modal"><img src="/images/svg/close.svg" alt="close icon" loading="lazy" /></button>
             <p>Moves: <span id="attempts">0</span></p>
         </div>
         <div class="game__modal__container" id="game"></div>
@@ -178,7 +185,7 @@ function startGame(): void {
                 <div class="card__item-symbol">♠</div>
                 <div class="card__item-footer">A</div>
             </div>
-            <div class="poker-chip"><img src="/build/images/webp/poker-chip.webp" alt="poker-chip"></div>
+            <div class="poker-chip"><img src="/images/webp/poker-chip.webp" alt="poker-chip"></div>
         </div>
     `;
     }
@@ -246,5 +253,3 @@ function resetGame(): void {
     });
     setTimeout(() => startGame(), 500);
 }
-
-// startGame();
