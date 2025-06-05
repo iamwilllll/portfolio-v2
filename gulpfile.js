@@ -22,10 +22,14 @@ const sass = gulpSass(dartSass); // Initialize gulp-sass with Dart Sass
 export function compileTs() {
     const tsProject = ts.createProject('tsconfig.json');
 
-    return src('src/scripts/**/*.ts') // Select all TS files in scripts folder
-        .pipe(tsProject()) // Compile TS to JS
-        .js.pipe(terser()) // Minify the resulting JS
-        .pipe(dest('build/JavaScript')); // Save compiled files
+    return (
+        src('src/scripts/**/*.ts') // Select all TypeScript files
+            // Remove '/build' prefix from paths before compiling
+            .pipe(replace(/(['"])\/build([^'"]*)\1/g, '$1$2$1')) // Handles both single and double quotes
+            .pipe(tsProject()) // Compile TS to JS
+            .js.pipe(terser()) // Minify the resulting JS
+            .pipe(dest('build/JavaScript'))
+    ); // Save compiled files
 }
 
 // Task to compile SCSS to CSS, minify it and generate sourcemaps
@@ -121,7 +125,7 @@ export function dev() {
 }
 
 // Build task runs all functions in series, including path fixing
-export const build = series(format, crop, compileTs, css, html, fixPaths);
+export const build = series(format, crop, compileTs, css, html, fixPaths, dev);
 
 // Export build as default task
 export default build;

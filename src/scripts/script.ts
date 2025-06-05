@@ -99,3 +99,149 @@ addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// game.ts
+// =====================
+// Select modal and buttons
+
+const modal = document.querySelector<HTMLElement>('#modal') || null;
+if (modal) {
+    modal.innerHTML = `  
+    <section class="game__modal hidden" >              
+        <div class="game__modal__info">
+            <button class="button game__modal__button" id="close-modal"><img src="/build/images/svg/close.svg" alt="close icon" loading="lazy" /></button>
+            <p>Moves: <span id="attempts">0</span></p>
+        </div>
+        <div class="game__modal__container" id="game"></div>
+        <button class="button play__again" id="play-again">Play again</button>
+        <div class="game__modal__message display-none">cards__message</div>
+    </section>
+`;
+}
+
+document.addEventListener('click', event => {
+    if (event.target === modal) {
+        toggleModal();
+    }
+});
+
+const gameModal = document.querySelector<HTMLElement>('.game__modal');
+const closeModalButton = document.getElementById('close-modal');
+const playAgainButton = document.getElementById('play-again');
+const playButton = document.getElementById('play');
+
+// Message and attempts display
+const message = document.querySelector<HTMLElement>('.game__modal__message');
+const attempts = document.getElementById('attempts');
+
+// Game state
+let cardItems: NodeListOf<HTMLElement>;
+let randomNumber = 0;
+let attemptsLeft = 0;
+
+// Attach modal toggle and control listeners
+closeModalButton?.addEventListener('click', toggleModal);
+playButton?.addEventListener('click', () => {
+    startGame();
+});
+playAgainButton?.addEventListener('click', resetGame);
+
+// Toggle modal visibility
+function toggleModal(): void {
+    gameModal?.classList.toggle('hidden');
+    gameModal?.classList.toggle('active');
+}
+
+// Initialize the game with a given number of cards and attempts
+function startGame(): void {
+    toggleModal();
+
+    let numCards = 3;
+    let maxAttempts = 2;
+    const container = document.querySelector<HTMLElement>('.game__modal__container');
+    if (!container) return;
+
+    // Reset container and state
+    container.innerHTML = '';
+    randomNumber = Math.floor(Math.random() * numCards) + 1;
+    attemptsLeft = maxAttempts;
+
+    // Render cards
+    for (let i = 1; i <= numCards; i++) {
+        container.innerHTML += `
+        <div class="cards">
+            <div class="card__item">
+                <div class="card__item-header">A</div>
+                <div class="card__item-symbol">♠</div>
+                <div class="card__item-footer">A</div>
+            </div>
+            <div class="poker-chip"><img src="/build/images/webp/poker-chip.webp" alt="poker-chip"></div>
+        </div>
+    `;
+    }
+
+    // Query items and bind click handlers
+    cardItems = container.querySelectorAll<HTMLElement>('.cards');
+    cardItems.forEach((card, idx) => {
+        card.addEventListener('click', () => handleCardClick(card, idx + 1));
+    });
+
+    updateAttemptsDisplay();
+}
+
+// Handle card click logic
+function handleCardClick(card: HTMLElement, id: number): void {
+    if (attemptsLeft <= 0) return;
+    const chip = card.querySelector<HTMLElement>('.poker-chip');
+
+    if (id === randomNumber) {
+        card.classList.add('active', 'winner');
+        setTimeout(() => chip?.classList.add('active'), 500);
+        showMessage('You win!');
+        attemptsLeft = 0;
+    } else {
+        card.classList.add('active');
+        attemptsLeft--;
+        setTimeout(() => {
+            cardItems.forEach(c => c.classList.remove('active'));
+        }, 2500);
+
+        if (attemptsLeft === 0 && !document.querySelector('.winner')) {
+            showMessage('You lost!');
+        }
+    }
+
+    updateAttemptsDisplay();
+}
+
+// Display remaining attempts
+function updateAttemptsDisplay(): void {
+    if (attempts) attempts.textContent = attemptsLeft.toString();
+}
+
+// Show temporary message then reset
+function showMessage(text: string): void {
+    if (!message) return;
+    message.textContent = text;
+    message.classList.remove('display-none');
+    message.classList.add('display-flex');
+
+    setTimeout(() => {
+        message.classList.add('display-none');
+        message.classList.remove('display-flex');
+        resetGame();
+    }, 5000);
+}
+
+// Reset cards and restart game
+function resetGame(): void {
+    if (!cardItems) return;
+    cardItems.forEach(card => {
+        const chip = card.querySelector<HTMLElement>('.poker-chip');
+        card.classList.remove('active', 'winner');
+        chip?.classList.remove('show-poker-chip');
+    });
+    setTimeout(() => startGame(), 500);
+}
+
+startGame();
