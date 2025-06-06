@@ -47,10 +47,6 @@
         }
     }
 
-    &__container {
-        display: flex;
-    }
-
     .play__again {
         color: v.$black;
         background-color: v.$white;
@@ -91,14 +87,21 @@
     }
 }
 
-.modal {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 10;
+.cards__container {
+    display: flex;
 }
-#start-game {
+
+#modal-overlay {
+    &.active {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 10;
+    }
+}
+
+#floating-game-button {
     position: fixed;
     right: 5rem;
     bottom: 5rem;
