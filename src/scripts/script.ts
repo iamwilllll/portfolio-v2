@@ -96,7 +96,9 @@ addEventListener('DOMContentLoaded', () => {
         }
 
         document.addEventListener('click', event => {
-            if (event.target === modalOverlay || event.target === closeModalButton) {
+            const target = event.target as HTMLElement;
+
+            if (event.target === modalOverlay || (closeModalButton && closeModalButton.contains(target))) {
                 toggleModal();
             }
         });
@@ -172,7 +174,7 @@ addEventListener('DOMContentLoaded', () => {
 
                             setTimeout(() => {
                                 chipContainer.appendChild(img);
-                            }, 100);
+                            }, 200);
                         }
 
                         attempts.reset();
