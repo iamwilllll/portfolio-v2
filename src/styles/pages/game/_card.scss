@@ -58,10 +58,12 @@
 
 .poker-chip {
     width: 5rem;
+    height: 5rem;
     transform: translateY(0rem);
-    opacity: 0;
+    opacity: 1;
     z-index: -1;
     transition: 0.2s;
+
 
     &.active {
         opacity: 1;
