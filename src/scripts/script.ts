@@ -82,6 +82,7 @@ addEventListener('DOMContentLoaded', () => {
         const closeModalButton = modalOverlay.querySelector('#close-modal') as HTMLButtonElement;
         const playAgainButton = modalOverlay.querySelector('#play-again') as HTMLButtonElement;
         const cardsContainer = modalOverlay.querySelector('.cards__container') as HTMLDivElement | null;
+        const gameMessage = modalOverlay.querySelector('.game__modal__message') as HTMLDivElement | null;
 
         function toggleModal(): void {
             gameModal?.classList.toggle('hidden');
@@ -155,13 +156,14 @@ addEventListener('DOMContentLoaded', () => {
                 card.addEventListener('click', () => {
                     if (attempts.remainingAttempts <= 0) {
                         gameOver = true;
-                        console.log('No more attempts left');
+                        showgameMessage('No more attempts left');
                     }
 
                     if (gameOver || card.classList.contains('active')) return;
 
                     if (index === winnerIndex) {
                         card.classList.add('winner');
+                        showgameMessage('You win!');
                         gameOver = true;
 
                         const chipContainer = card.querySelector('.poker-chip') as HTMLDivElement | null;
@@ -208,5 +210,16 @@ addEventListener('DOMContentLoaded', () => {
 
         attempts.show();
         startGame();
+    }
+
+    function showgameMessage(message: string): void {
+        const gameMessage = document.querySelector('.game__modal__message') as HTMLDivElement | null;
+        if (gameMessage) {
+            gameMessage.classList.remove('display-none');
+            gameMessage.innerHTML = message;
+            setTimeout(() => {
+                gameMessage.classList.add('display-none');
+            }, 3000);
+        }
     }
 });
