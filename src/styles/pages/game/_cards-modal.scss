@@ -7,18 +7,25 @@
     align-items: center;
     flex-direction: column;
     position: fixed;
-    z-index: 5;
     left: 50%;
-    padding: 5rem 20rem;
+    z-index: 5;
     background-color: v.$deep-black;
-    border-radius: 5rem;
     transition: 1.5s;
+    border-radius: 5rem;
     border: solid 0.1rem v.$lavender;
+    padding: 5rem;
 
+    @include m.desktop {
+        padding: 5rem 20rem;
+    }
     &__info {
         display: inherit;
         flex-direction: row-reverse;
-        gap: 30rem;
+        gap: 10rem;
+
+        @include m.desktop {
+            gap: 30rem;
+        }
 
         p {
             color: v.$white;
@@ -63,14 +70,15 @@
     }
 
     &__message {
-        font-size: 5rem;
+        font-size: 2.5rem;
         color: v.$white;
         background-color: #000000cc;
-        padding: 8rem 10rem;
+        padding: 5rem;
         border-radius: 1rem;
         position: absolute;
         top: 50%;
         left: 50%;
+        text-align: center;
         transform: translate(-50%, -50%);
     }
 
@@ -88,7 +96,10 @@
 }
 
 .cards__container {
-    display: flex;
+    @include m.grid(2, 3.5rem);
+    @include m.desktop {
+        display: flex;
+    }
 }
 
 #modal-overlay {
