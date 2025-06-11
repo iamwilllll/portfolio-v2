@@ -1,13 +1,15 @@
-// Espera hasta que todo el contenido HTML haya cargado completamente
+// Wait until the entire HTML content has fully loaded
 addEventListener('DOMContentLoaded', () => {
     const openMenu = document.querySelector('#open-menu') as HTMLButtonElement | null;
     const nav = document.querySelector('.nav') as HTMLElement | null;
 
     if (openMenu && nav) {
+        // Toggle the navigation menu when the menu button is clicked
         openMenu.addEventListener('click', () => {
             nav.classList.toggle('active');
         });
 
+        // Close the navigation menu when clicking outside of it
         document.addEventListener('click', event => {
             const target = event.target as Node;
 
@@ -18,6 +20,7 @@ addEventListener('DOMContentLoaded', () => {
     }
 
     if (nav) {
+        // Shrink the navbar when scrolling down
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 nav.classList.add('shrunk');
@@ -26,10 +29,12 @@ addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Remove shrink effect when mouse enters the navbar
         nav.addEventListener('mouseenter', () => {
             nav.classList.remove('shrunk');
         });
 
+        // Reapply shrink effect when mouse leaves the navbar and scroll is down
         nav.addEventListener('mouseleave', () => {
             if (window.scrollY > 100) {
                 nav.classList.add('shrunk');
@@ -44,6 +49,7 @@ addEventListener('DOMContentLoaded', () => {
     let index: number = 1;
 
     if (projectButtonLeft && projectButtonRight && projectsContainer) {
+        // Navigate to the previous project
         projectButtonLeft.addEventListener('click', () => {
             if (index > 0) {
                 index--;
@@ -51,12 +57,13 @@ addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Navigate to the next project
         projectButtonRight.addEventListener('click', () => {
             if (index < 2) {
                 index++;
                 projectsContainer.style.transform = `translateX(${(1 - index) * 110}%)`;
             } else {
-                console.log('Ya estás en el último proyecto');
+                console.log('You are already on the last project');
             }
         });
     }
@@ -64,6 +71,7 @@ addEventListener('DOMContentLoaded', () => {
     const modalOverlay = document.querySelector('#modal-overlay') as HTMLElement | null;
 
     if (modalOverlay) {
+        // Set up the modal HTML structure
         modalOverlay.innerHTML = `
         <section class="game__modal hidden">
             <div class="game__modal__info">
@@ -84,6 +92,7 @@ addEventListener('DOMContentLoaded', () => {
         const cardsContainer = modalOverlay.querySelector('.cards__container') as HTMLDivElement | null;
         const gameMessage = modalOverlay.querySelector('.game__modal__message') as HTMLDivElement | null;
 
+        // Toggle the visibility of the modal
         function toggleModal(): void {
             gameModal?.classList.toggle('hidden');
             gameModal?.classList.toggle('active');
@@ -93,9 +102,11 @@ addEventListener('DOMContentLoaded', () => {
         const floatingGameButton = document.querySelector('#floating-game-button') as HTMLButtonElement | null;
 
         if (floatingGameButton) {
+            // Open the modal when the floating button is clicked
             floatingGameButton.addEventListener('click', toggleModal);
         }
 
+        // Close the modal when clicking the overlay or close button
         document.addEventListener('click', event => {
             const target = event.target as HTMLElement;
 
@@ -104,6 +115,7 @@ addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Function to generate a card's HTML
         function createCard(): string {
             return `
             <div class="cards">
@@ -118,6 +130,7 @@ addEventListener('DOMContentLoaded', () => {
             `;
         }
 
+        // Object to manage remaining attempts
         const attempts = {
             remainingAttempts: 3,
             show() {
@@ -138,6 +151,7 @@ addEventListener('DOMContentLoaded', () => {
             },
         };
 
+        // Start a new game
         function startGame() {
             if (!cardsContainer) return;
             cardsContainer.innerHTML = '';
@@ -150,8 +164,7 @@ addEventListener('DOMContentLoaded', () => {
             const winnerIndex = Math.floor(Math.random() * cards.length);
             let gameOver = false;
 
-            console.log('Carta ganadora (índice):', winnerIndex);
-
+            // Add click events to each card
             cards.forEach((card, index) => {
                 card.addEventListener('click', () => {
                     if (attempts.remainingAttempts <= 0) {
@@ -178,8 +191,6 @@ addEventListener('DOMContentLoaded', () => {
                                 chipContainer.appendChild(img);
                             }, 200);
                         }
-
-                        attempts.reset();
                     } else {
                         card.classList.add('active');
 
@@ -193,6 +204,7 @@ addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Reset the game when clicking "Play again"
         function playAgain() {
             const cards = cardsContainer?.querySelectorAll('.cards') as NodeListOf<HTMLElement>;
 
@@ -212,6 +224,7 @@ addEventListener('DOMContentLoaded', () => {
         startGame();
     }
 
+    // Display a message in the modal
     function showgameMessage(message: string): void {
         const gameMessage = document.querySelector('.game__modal__message') as HTMLDivElement | null;
         if (gameMessage) {
