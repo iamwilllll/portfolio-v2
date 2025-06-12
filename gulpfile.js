@@ -121,7 +121,11 @@ export function dev() {
 }
 
 // Build task runs all functions in series, including path fixing
-export const build = series(format, crop, compileTs, css, html, fixPaths);
+/* for deploy */
+export const deploy = series(format, crop, compileTs, css, html, fixPaths);
+
+/* for developping */
+export const build = series(format, crop, compileTs, css, html, fixPaths, dev);
 
 // Export build as default task
 export default build;
