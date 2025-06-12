@@ -16,35 +16,35 @@ This is my personal portfolio developed with modern technologies from the web ec
 Clone the repository:
 
 ```bash
-    git clone https://github.com/iamwilllll/portfolio-v2.git
+git clone https://github.com/iamwilllll/portfolio-v2.git
 ```
 
 install dependencies
 
 ```bash
-    npm i
+npm i
 ```
 
 Start developer tasks
 
 ```bash
-    npm run dev
+npm run dev
 ```
 
 ## 🏗️ Project structure
 
 ```bash
-    ├── .git/                  # Git folder
-    ├── src/                   # Source code (HTML, TS, SASS)
-    ├── build/                 # Compiled files for production
-    ├── public/                # Static files
-    ├── .gitignore             # Git ignore file
-    ├── gulpfile.js            # Gulp task definitions
-    ├── package.json           # Project metadata and dependencies
-    ├── tsconfig.json          # TypeScript configuration
-    ├── .prettierrc            # Prettier configuration
-    ├── README.md              # Project documentation
-    └── LICENSE                # License file
+├── .git/                  # Git folder
+├── src/                   # Source code (HTML, TS, SASS)
+├── build/                 # Compiled files for production
+├── public/                # Static files
+├── .gitignore             # Git ignore file
+├── gulpfile.js            # Gulp task definitions
+├── package.json           # Project metadata and dependencies
+├── tsconfig.json          # TypeScript configuration
+├── .prettierrc            # Prettier configuration
+├── README.md              # Project documentation
+└── LICENSE                # License file
 
 ```
 
