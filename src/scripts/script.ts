@@ -42,31 +42,7 @@ addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const projectButtonLeft = document.querySelector('#projects__left') as HTMLButtonElement | null;
-    const projectButtonRight = document.querySelector('#projects__right') as HTMLButtonElement | null;
-    const projectsContainer = document.querySelector('.projects__container') as HTMLDivElement | null;
-
     let index: number = 1;
-
-    if (projectButtonLeft && projectButtonRight && projectsContainer) {
-        // Navigate to the previous project
-        projectButtonLeft.addEventListener('click', () => {
-            if (index > 0) {
-                index--;
-                projectsContainer.style.transform = `translateX(${(1 - index) * 110}%)`;
-            }
-        });
-
-        // Navigate to the next project
-        projectButtonRight.addEventListener('click', () => {
-            if (index < 2) {
-                index++;
-                projectsContainer.style.transform = `translateX(${(1 - index) * 110}%)`;
-            } else {
-                console.log('You are already on the last project');
-            }
-        });
-    }
 
     const modalOverlay = document.querySelector('#modal-overlay') as HTMLElement | null;
 
